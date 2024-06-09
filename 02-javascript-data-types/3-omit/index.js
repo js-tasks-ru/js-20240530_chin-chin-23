@@ -14,12 +14,3 @@ export const omit = (obj, ...fields) => {
   });
   return result;
 };
-
-
-const fruits = {
-  apple: 2,
-  orange: 4,
-  banana: 3
-};
-
-console.log(omit(fruits, 'apple', 'banana'));
