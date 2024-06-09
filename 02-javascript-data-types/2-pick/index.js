@@ -12,11 +12,3 @@ export const pick = (obj, ...fields) => {
       return acc;
     }, {});
 };
-
-const fruits = {
-  apple: 2,
-  orange: 4,
-  banana: 3
-};
-
-console.log(pick(fruits, 'apple', 'banana')); // { apple: 2, banana: 3 }
