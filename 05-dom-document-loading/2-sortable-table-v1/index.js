@@ -6,23 +6,29 @@ export default class SortableTable {
   }
 
   render() {
-    const element = document.createElement('div');
-
-    element.innerHTML = `
-      <div data-element="productsContainer" class="products-list__container">
-        <div class="sortable-table">
-          <div data-element="header" class="sortable-table__header sortable-table__row">
-            ${this.getHeaderCells()}
-          </div>
-          <div data-element="body" class="sortable-table__body">
-            ${this.getBodyRows()}
-          </div>
-        </div>
-      </div>
-    `;
-
-    this.element = element.firstElementChild;
+    this.element = this.createElement(this.createTemplate());
     this.subElements = this.getSubElements(this.element);
+  }
+
+  createElement(template) {
+    const element = document.createElement('div');
+    element.innerHTML = template;
+    return element.firstElementChild;
+  }
+
+  createTemplate() {
+    return (`
+        <div data-element="productsContainer" class="products-list__container">
+            <div class="sortable-table">
+              <div data-element="header" class="sortable-table__header sortable-table__row">
+                ${this.getHeaderCells()}
+              </div>
+              <div data-element="body" class="sortable-table__body">
+                ${this.getBodyRows()}
+              </div>
+            </div>
+        </div>
+    `);
   }
 
   getHeaderCells() {
@@ -78,7 +84,6 @@ export default class SortableTable {
 
   destroy() {
     this.element.remove();
-    this.subElements = {};
   }
 }
 
